@@ -1,0 +1,7 @@
+{
+  "name": "WardrobeWizard",
+  "description": "Your super-friendly, sustainable personal fashion stylist that creates fresh outfits using only the clothes you already own.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
