@@ -1,5 +1,4 @@
-
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect, useCallback, useMemo } from 'react';
 import { WardrobeItem, Outfit } from '../types';
 
 interface WardrobeContextType {
@@ -41,27 +40,35 @@ export const WardrobeProvider: React.FC<{ children: ReactNode }> = ({ children }
     }
   }, [items]);
 
-  const setUserName = (name: string) => {
+  const setUserName = useCallback((name: string) => {
     setUserNameState(name);
     localStorage.setItem('wardrobe_user_name', name);
-  };
+  }, []);
 
-  const addItem = (item: WardrobeItem) => {
+  const addItem = useCallback((item: WardrobeItem) => {
     setItems(prev => [...prev, item]);
-  };
+  }, []);
   
-  const deleteItem = (id: string) => {
-    // Explicitly filter by ID to ensure complete removal
-    setItems(prev => {
-      const updated = prev.filter(item => item.id !== id);
-      return [...updated]; // Return fresh array reference
-    });
-  };
+  const deleteItem = useCallback((id: string) => {
+    setItems(prev => prev.filter(item => item.id !== id));
+  }, []);
 
-  const saveOutfit = (outfit: Outfit) => setOutfits(prev => [outfit, ...prev]);
+  const saveOutfit = useCallback((outfit: Outfit) => {
+    setOutfits(prev => [outfit, ...prev]);
+  }, []);
+
+  const contextValue = useMemo(() => ({
+    items,
+    addItem,
+    deleteItem,
+    outfits,
+    saveOutfit,
+    userName,
+    setUserName
+  }), [items, addItem, deleteItem, outfits, saveOutfit, userName, setUserName]);
 
   return (
-    <WardrobeContext.Provider value={{ items, addItem, deleteItem, outfits, saveOutfit, userName, setUserName }}>
+    <WardrobeContext.Provider value={contextValue}>
       {children}
     </WardrobeContext.Provider>
   );

@@ -42,29 +42,22 @@ const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab, onUp
       {/* Navigation */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] z-50">
         
-        {/* Elevated Upload Button Container - EXCLUSIVELY in Wardrobe mode */}
+        {/* Elevated Upload Button Container - Only visible in Wardrobe mode */}
         {activeTab === 'wardrobe' && (
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 group z-[70] animate-in fade-in zoom-in duration-300">
-            {/* Enhanced Ambient Glow */}
-            <div className="absolute inset-0 bg-white/30 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700 pointer-events-none" />
+            {/* Ambient Background Glow (Enhanced for hover) */}
+            <div className="absolute inset-0 bg-white/40 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700 pointer-events-none" />
             
-            {/* The Button */}
+            {/* The Button - Updated: removed rotation animation from icon */}
             <button 
               onClick={onUploadClick}
-              className="relative w-20 h-20 bg-white text-[#0D01F5] rounded-[28px] flex items-center justify-center shadow-[0_15px_40px_rgba(0,0,0,0.5)] border-4 border-[#120B38] hover:bg-[#0D01F5] hover:text-white hover:border-white hover:-translate-y-2 active:scale-90 active:translate-y-0 transition-all duration-300 z-[80] overflow-hidden cursor-pointer"
+              className="relative w-20 h-20 bg-white text-[#0D01F5] rounded-full flex items-center justify-center shadow-[0_15px_40px_rgba(0,0,0,0.5)] border-4 border-[#120B38] hover:shadow-[0_0_45px_rgba(255,255,255,0.7)] hover:-translate-y-2 active:scale-90 active:translate-y-0 transition-all duration-300 z-[80] overflow-hidden cursor-pointer outline-none"
             >
-              <span className="text-4xl font-black transform transition-transform duration-500 group-hover:rotate-90">+</span>
+              <span className="text-5xl font-black transform transition-transform duration-500 mb-1">+</span>
               
-              {/* Inner Ring for extra flair */}
-              <div className="absolute inset-1 rounded-[22px] border border-black/5 pointer-events-none" />
+              {/* Inner highlight for premium feel */}
+              <div className="absolute inset-1 rounded-full border border-black/5 pointer-events-none" />
             </button>
-            
-            {/* Improved Floating Label */}
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-              <span className="text-[10px] font-black text-white uppercase tracking-[0.3em] whitespace-nowrap drop-shadow-lg bg-[#0D01F5]/80 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
-                Add New Piece
-              </span>
-            </div>
           </div>
         )}
 

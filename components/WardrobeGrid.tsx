@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useWardrobe } from '../context/WardrobeContext';
 import { Category } from '../types';
@@ -12,12 +11,11 @@ const WardrobeGrid: React.FC = () => {
   const filteredItems = activeCat === 'all' ? items : items.filter(i => i.category === activeCat);
 
   const confirmAndDelete = (e: React.MouseEvent, id: string, name: string) => {
-    // Stop the click from bubbling to the item card if any click handlers are added there later
     e.stopPropagation();
     e.preventDefault();
     
-    // Using simple confirm for clarity, but optimized for mobile
-    const confirmed = window.confirm(`Permanently delete your ${name}?`);
+    // Using a standard confirm dialog which is highly compatible with mobile browsers
+    const confirmed = window.confirm(`Permanently remove your "${name}" from the closet?`);
     if (confirmed) {
       deleteItem(id);
     }
@@ -47,25 +45,25 @@ const WardrobeGrid: React.FC = () => {
             key={item.id} 
             className="bg-white rounded-[32px] p-4 shadow-xl flex flex-col items-center group relative transition-all duration-300"
           >
-            {/* ENHANCED DELETE BUTTON - Higher Visibility & Better Hit Area */}
-            <div className="absolute -top-2 -right-2 z-[999]">
+            {/* DELETE BUTTON - Top Right Overlapping Piece */}
+            <div className="absolute -top-2 -right-2 z-[50]">
               <button 
                 type="button"
                 onClick={(e) => confirmAndDelete(e, item.id, item.name)}
-                className="w-11 h-11 bg-red-600 text-white rounded-full flex items-center justify-center shadow-[0_4px_15px_rgba(220,38,38,0.4)] border-4 border-white hover:bg-red-700 active:scale-75 transition-all cursor-pointer"
-                title="Delete Item"
+                className="w-11 h-11 bg-red-600 text-white rounded-full flex items-center justify-center shadow-[0_6px_20px_rgba(220,38,38,0.4)] border-4 border-white hover:bg-red-700 active:scale-75 transition-all cursor-pointer outline-none"
+                aria-label={`Delete ${item.name}`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
                 </svg>
               </button>
             </div>
 
-            <div className="w-full aspect-square bg-indigo-50/50 rounded-[24px] overflow-hidden mb-3 border border-indigo-100/50 shadow-inner pointer-events-none">
-              <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
+            <div className="w-full aspect-square bg-indigo-50/50 rounded-[24px] overflow-hidden mb-3 border border-indigo-100/50 shadow-inner">
+              <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
             </div>
             
-            <div className="w-full px-1 pointer-events-none">
+            <div className="w-full px-1">
               <span className="block text-[11px] font-black text-indigo-950 uppercase text-center truncate tracking-tight">
                 {item.name}
               </span>

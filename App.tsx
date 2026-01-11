@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from './components/Layout';
 import WardrobeGrid from './components/WardrobeGrid';
@@ -31,8 +30,8 @@ const AppContent: React.FC<{ activeTab: string; setActiveTab: (t: string) => voi
   const handleSave = () => {
     if (uploadPreview && newItemName.trim()) {
       const newItem: WardrobeItem = {
-        id: Math.random().toString(36).substr(2, 9),
-        name: newItemName,
+        id: Math.random().toString(36).substring(2, 11),
+        name: newItemName.trim(),
         category: newItemCategory,
         imageUrl: uploadPreview
       };
