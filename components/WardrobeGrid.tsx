@@ -11,9 +11,14 @@ const WardrobeGrid: React.FC = () => {
 
   const filteredItems = activeCat === 'all' ? items : items.filter(i => i.category === activeCat);
 
-  const handleDelete = (id: string, name: string) => {
-    // Immediate confirmation and deletion for better reliability
-    if (confirm(`Remove "${name}" from your closet?`)) {
+  const confirmAndDelete = (e: React.MouseEvent, id: string, name: string) => {
+    // Stop the click from bubbling to the item card if any click handlers are added there later
+    e.stopPropagation();
+    e.preventDefault();
+    
+    // Using simple confirm for clarity, but optimized for mobile
+    const confirmed = window.confirm(`Permanently delete your ${name}?`);
+    if (confirmed) {
       deleteItem(id);
     }
   };
@@ -42,28 +47,25 @@ const WardrobeGrid: React.FC = () => {
             key={item.id} 
             className="bg-white rounded-[32px] p-4 shadow-xl flex flex-col items-center group relative transition-all duration-300"
           >
-            {/* Delete Button - Increased z-index and click area safety */}
-            <div className="absolute -top-1 -right-1 z-[100]">
+            {/* ENHANCED DELETE BUTTON - Higher Visibility & Better Hit Area */}
+            <div className="absolute -top-2 -right-2 z-[999]">
               <button 
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  handleDelete(item.id, item.name);
-                }}
-                className="w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg border-2 border-white hover:bg-red-600 active:scale-90 transition-all cursor-pointer"
+                type="button"
+                onClick={(e) => confirmAndDelete(e, item.id, item.name)}
+                className="w-11 h-11 bg-red-600 text-white rounded-full flex items-center justify-center shadow-[0_4px_15px_rgba(220,38,38,0.4)] border-4 border-white hover:bg-red-700 active:scale-75 transition-all cursor-pointer"
                 title="Delete Item"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
                 </svg>
               </button>
             </div>
 
-            <div className="w-full aspect-square bg-indigo-50/50 rounded-[24px] overflow-hidden mb-3 border border-indigo-100/50 shadow-inner">
+            <div className="w-full aspect-square bg-indigo-50/50 rounded-[24px] overflow-hidden mb-3 border border-indigo-100/50 shadow-inner pointer-events-none">
               <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
             </div>
             
-            <div className="w-full px-1">
+            <div className="w-full px-1 pointer-events-none">
               <span className="block text-[11px] font-black text-indigo-950 uppercase text-center truncate tracking-tight">
                 {item.name}
               </span>

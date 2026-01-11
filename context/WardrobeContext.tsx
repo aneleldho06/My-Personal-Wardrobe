@@ -15,6 +15,7 @@ interface WardrobeContextType {
 const WardrobeContext = createContext<WardrobeContextType | undefined>(undefined);
 
 export const WardrobeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  // Initialize items from localStorage safely
   const [items, setItems] = useState<WardrobeItem[]>(() => {
     try {
       const saved = localStorage.getItem('wardrobe_items');
@@ -31,12 +32,12 @@ export const WardrobeProvider: React.FC<{ children: ReactNode }> = ({ children }
     return localStorage.getItem('wardrobe_user_name') || 'Fashionista';
   });
 
+  // Sync state to localStorage whenever items change
   useEffect(() => {
     try {
       localStorage.setItem('wardrobe_items', JSON.stringify(items));
     } catch (e) {
-      console.error("Failed to save wardrobe items. Your storage might be full!", e);
-      // We still update the state in-memory
+      console.error("Failed to sync items to storage", e);
     }
   }, [items]);
 
@@ -50,7 +51,11 @@ export const WardrobeProvider: React.FC<{ children: ReactNode }> = ({ children }
   };
   
   const deleteItem = (id: string) => {
-    setItems(prev => prev.filter(item => item.id !== id));
+    // Explicitly filter by ID to ensure complete removal
+    setItems(prev => {
+      const updated = prev.filter(item => item.id !== id);
+      return [...updated]; // Return fresh array reference
+    });
   };
 
   const saveOutfit = (outfit: Outfit) => setOutfits(prev => [outfit, ...prev]);
