@@ -6,6 +6,9 @@ This is a small, kind mobile app that helps you make nice outfits...
 
 No need to buy anything new! ♻️  
 Just fun, simple styling with what you own.
+![hello001](https://github.com/user-attachments/assets/8344572a-e48a-48c7-b3df-e5a1e850f6f8)
+
+
 
 ## What does the app do? (very easy version)
 
@@ -22,7 +25,7 @@ Very useful for students, people who want to save money, or anyone who loves the
 Here you can show how the app looks!
 
 ### 1. Welcome / Start screen
-[simple](https://github.com/user-attachments/assets/195cc8de-704a-46b8-9ab7-c85387d5bbde)
+
  
 How to add image in GitHub README:
 1. Upload your photo to the repo (drag & drop in GitHub website)
