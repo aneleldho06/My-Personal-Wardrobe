@@ -54,17 +54,54 @@ Sustainability through reuse — encouraging users to rediscover and creatively 
 
 ## Technical Setup (Development)
 
-```bash
+
 # 1. Clone the repository
+```bash 
 git clone https://github.com/aneleldho06/wardrobewizard.git
+```
 
 # 2. Navigate to project directory
+```bash
 cd wardrobewizard
+```
 
 # 3. Install dependencies
+```bash
 npm install
+```
 
 # 4. Start the development server
+```bash
 npm start
+```
+
 # or (recommended for Expo/React Native):
+```bash
 npx expo start
+```
+
+## Potential Improvements & Roadmap
+
+The current version is an MVP focused on core functionality. Planned enhancements include:
+
+**Near-term (1–3 months)**  
+- Real-time weather integration for smarter outfit filtering  
+- Laundry/clean-dirty status tracking per item  
+- "What can I wear with this?" anchor-item mode  
+- Outfit favorites & basic calendar/planner  
+
+**Medium-term (3–9 months)**  
+- Improved image processing (better auto-tagging & background removal)  
+- Low-usage item highlights & gentle reminders  
+- Outfit export as shareable images/stories  
+- Offline support for basic features  
+
+**Long-term vision**  
+- User accounts with cloud sync (persistent wardrobes across devices)  
+- Optional second-hand resale integration (ethical affiliate links only)  
+- Advanced analytics (cost-per-wear estimation, wardrobe variety score)  
+- Multi-profile support (family/shared wardrobes)  
+
+All future features will maintain the core principle: **style only what you already own** — with no pressure to purchase new items.
+
+We are committed to building an ethical, sustainable tool that evolves based on real user feedback.
