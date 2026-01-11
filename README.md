@@ -1,4 +1,5 @@
 # WardrobeWizard 🪄👕
+<img width="1468" height="721" alt="image" src="https://github.com/user-attachments/assets/ecbbba5a-b814-4929-8887-5a78edb82db3" />
 
 Hello! 🌟  
 This is a small, kind mobile app that helps you make nice outfits...  
@@ -20,9 +21,6 @@ Just fun, simple styling with what you own.
 
 Very useful for students, people who want to save money, or anyone who loves their old clothes 💛
 
-## Screenshots (coming soon!)
-
-Here you can show how the app looks!
 
 ### 1. Welcome / Start screen
 [simple](https://github.com/user-attachments/assets/195cc8de-704a-46b8-9ab7-c85387d5bbde)
