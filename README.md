@@ -37,7 +37,7 @@ Sustainability through reuse — encouraging users to rediscover and creatively 
    - Prioritizes underused items  
    - No shopping recommendations or affiliate links  
    - Encourages higher cost-per-wear and reduced consumption
-
+---
 ## Screenshots
 
 ### Welcome & Onboarding Screen
@@ -51,9 +51,9 @@ Sustainability through reuse — encouraging users to rediscover and creatively 
 
 ### 7-Day Outfit Plan View
 <img width="393" alt="7-Day Plan" src="https://github.com/user-attachments/assets/ff1f260f-a373-4db2-aaaa-9c93eff50f94" />
+---
 
 ## Technical Setup (Development)
-
 
 1. Clone the repository
 ```bash 
@@ -79,7 +79,7 @@ or (recommended for Expo/React Native):
 ```bash
 npx expo start
 ```
-
+---
 ## Potential Improvements & Roadmap
 
 The current version is an MVP focused on core functionality. Planned enhancements include:
