@@ -42,29 +42,31 @@ const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab, onUp
       {/* Navigation */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] z-50">
         
-        {/* Elevated Upload Button Container */}
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 group z-[70]">
-          {/* Enhanced Ambient Glow */}
-          <div className="absolute inset-0 bg-white/30 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700 pointer-events-none" />
-          
-          {/* The Button */}
-          <button 
-            onClick={onUploadClick}
-            className="relative w-20 h-20 bg-white text-[#0D01F5] rounded-[28px] flex items-center justify-center shadow-[0_15px_40px_rgba(0,0,0,0.5)] border-4 border-[#120B38] hover:bg-[#0D01F5] hover:text-white hover:border-white hover:-translate-y-2 active:scale-90 active:translate-y-0 transition-all duration-300 z-[80] overflow-hidden cursor-pointer"
-          >
-            <span className="text-4xl font-black transform transition-transform duration-500 group-hover:rotate-90">+</span>
+        {/* Elevated Upload Button Container - EXCLUSIVELY in Wardrobe mode */}
+        {activeTab === 'wardrobe' && (
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 group z-[70] animate-in fade-in zoom-in duration-300">
+            {/* Enhanced Ambient Glow */}
+            <div className="absolute inset-0 bg-white/30 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700 pointer-events-none" />
             
-            {/* Inner Ring for extra flair */}
-            <div className="absolute inset-1 rounded-[22px] border border-black/5 pointer-events-none" />
-          </button>
-          
-          {/* Improved Floating Label */}
-          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-            <span className="text-[10px] font-black text-white uppercase tracking-[0.3em] whitespace-nowrap drop-shadow-lg bg-[#0D01F5]/80 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
-              Add New Piece
-            </span>
+            {/* The Button */}
+            <button 
+              onClick={onUploadClick}
+              className="relative w-20 h-20 bg-white text-[#0D01F5] rounded-[28px] flex items-center justify-center shadow-[0_15px_40px_rgba(0,0,0,0.5)] border-4 border-[#120B38] hover:bg-[#0D01F5] hover:text-white hover:border-white hover:-translate-y-2 active:scale-90 active:translate-y-0 transition-all duration-300 z-[80] overflow-hidden cursor-pointer"
+            >
+              <span className="text-4xl font-black transform transition-transform duration-500 group-hover:rotate-90">+</span>
+              
+              {/* Inner Ring for extra flair */}
+              <div className="absolute inset-1 rounded-[22px] border border-black/5 pointer-events-none" />
+            </button>
+            
+            {/* Improved Floating Label */}
+            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+              <span className="text-[10px] font-black text-white uppercase tracking-[0.3em] whitespace-nowrap drop-shadow-lg bg-[#0D01F5]/80 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
+                Add New Piece
+              </span>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Navbar */}
         <nav className="bg-white/5 backdrop-blur-3xl rounded-[40px] px-6 py-4 flex justify-between items-center shadow-[0_25px_60px_rgba(0,0,0,0.4)] border border-white/10 gap-3 relative overflow-hidden">
