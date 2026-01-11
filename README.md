@@ -1,9 +1,13 @@
 # WardrobeWizard 🪄👕
-<img width="1468" height="721" alt="image" src="https://github.com/user-attachments/assets/ecbbba5a-b814-4929-8887-5a78edb82db3" />
-
 Hello! 🌟  
 This is a small, kind mobile app that helps you make nice outfits...  
+
 ...using **only** the clothes you already have at home.  
+<img width="1468" height="721" alt="image" src="https://github.com/user-attachments/assets/ecbbba5a-b814-4929-8887-5a78edb82db3" />
+
+WEBSITE LINK : https://the-wardrobe-wizard.lovable.app/
+
+MOBILE APP LINK : https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB
 
 No need to buy anything new! ♻️  
 Just fun, simple styling with what you own.
@@ -11,7 +15,7 @@ Just fun, simple styling with what you own.
 
 
 
-## What does the app do? (very easy version)
+## What does the app do? 
 
 1. You add your clothes (take photo or choose from gallery) 📸
 2. The app remembers your wardrobe
@@ -23,10 +27,8 @@ Very useful for students, people who want to save money, or anyone who loves the
 
 
 ### 1. Welcome / Start screen
-[simple](https://github.com/user-attachments/assets/195cc8de-704a-46b8-9ab7-c85387d5bbde)
+<img width="880" height="575" alt="image" src="https://github.com/user-attachments/assets/8c314729-47d5-41ee-b85a-5e7ca8dc0293" />
 
-
-![Welcome Screen](your-image-link-here.jpg)
 
 2. Screen where you add clothes
 
