@@ -34,15 +34,15 @@ Very useful for students, people who want to save money, or anyone who loves the
 <img width="880" height="575" alt="image" src="https://github.com/user-attachments/assets/8c314729-47d5-41ee-b85a-5e7ca8dc0293" />
 
 
-2. Screen where you add clothes
+###2. Screen where you add clothes
 
 <img width="381" height="556" alt="yeahhhhhh 2026-01-11 at 8 35 57 AM" src="https://github.com/user-attachments/assets/e4c8c683-5dc6-4daf-8f4b-7deb05813188" />
 
-3. Outfit ideas example
+###3. Outfit ideas example
 
 <img width="420" height="692" alt="yeahhhhhh 2026-01-11 at 8 37 13 AM" src="https://github.com/user-attachments/assets/6ae49f29-e51b-4dca-92c2-ae3ef1af7b9b" />
 
-4. 7-day plan example
+###4. 7-day plan example
 <img width="393" height="686" alt="yeahhhhhh 2026-01-11 at 8 39 34 AM" src="https://github.com/user-attachments/assets/ff1f260f-a373-4db2-aaaa-9c93eff50f94" />
 
 
