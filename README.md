@@ -1,56 +1,97 @@
-# WardrobeWizard 🪄👕
-Hello! 🌟  
-This is a small, kind mobile app that helps you make nice outfits...  
+<div align="center">
 
-...using **only** the clothes you already have at home.  
+  # WardrobeWizard 🪄✨👗👕
 
-WEBSITE LINK : https://the-wardrobe-wizard.lovable.app/
+  <h3>Hi cutie! 💕 Your personal AI fashion bestie ♡</h3>
 
-MOBILE APP LINK : https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB
+  <p>
+    The little magical app that helps you create <b>super cute outfits</b><br>
+    using <b>only</b> the clothes you already have at home~ ♻️💖
+  </p>
 
-#
+  <p>
+    <strong>Website:</strong> <a href="https://the-wardrobe-wizard.lovable.app/">the-wardrobe-wizard.lovable.app</a><br>
+    <strong>Mobile App (AI Studio):</strong> <a href="https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB">Click here ♡</a>
+  </p>
 
-<img width="1468" height="721" alt="image" src="https://github.com/user-attachments/assets/ecbbba5a-b814-4929-8887-5a78edb82db3" />
+  <br>
 
+  <img width="80%" alt="hero banner" src="https://github.com/user-attachments/assets/ecbbba5a-b814-4929-8887-5a78edb82db3" />
 
-No need to buy anything new! ♻️  
-Just fun, simple styling with what you own.
-![hello001](https://github.com/user-attachments/assets/8344572a-e48a-48c7-b3df-e5a1e850f6f8)
+  <br><br>
 
+  ## Why we made this? 🥹
 
+  Because your closet is already full of treasures…  
+  but you still feel like you have “nothing to wear” 😭  
+  Let’s change that together~ ♡
 
-## What does the app do? 
+  No shopping needed. Just you, your clothes, and a tiny bit of AI magic! 🌟
 
-1. You add your clothes (take photo or choose from gallery) 📸
-2. The app remembers your wardrobe
-3. You say: "I need outfit for college" or "party tonight"
-4. AI friend gives you 3–4 pretty outfit ideas using **your** clothes only 😊
-5. You can also ask for a full week plan (7 days of different looks!)
+</div>
 
-Very useful for students, people who want to save money, or anyone who loves their old clothes 💛
+## How it works (super easy peasy!) 💫
 
+1. Add your clothes 📸  
+   (take photo or pick from gallery — we make it cute & fast!)
 
-### 1. Welcome / Start screen
-<img width="880" height="575" alt="image" src="https://github.com/user-attachments/assets/8c314729-47d5-41ee-b85a-5e7ca8dc0293" />
+2. Your wardrobe gets saved forever ♡
 
+3. Just tell your AI friend:  
+   “Outfit for college tomorrow~”  
+   “Party look tonight pls!!”  
+   “Cozy rainy day vibe 🥰”
 
-### 2. Screen where you add clothes
+4. Get 3–4 adorable outfit ideas using **only your clothes** ✨
 
-<img width="381" height="556" alt="yeahhhhhh 2026-01-11 at 8 35 57 AM" src="https://github.com/user-attachments/assets/e4c8c683-5dc6-4daf-8f4b-7deb05813188" />
+5. Bonus: Ask for a full **7-day plan** — different looks every day! 🗓️💕
 
-### 3. Outfit ideas example
+Perfect for students, minimalism lovers, savers, and anyone who wants to love their old clothes more! 🫶
 
-<img width="420" height="692" alt="yeahhhhhh 2026-01-11 at 8 37 13 AM" src="https://github.com/user-attachments/assets/6ae49f29-e51b-4dca-92c2-ae3ef1af7b9b" />
+<br>
 
-### 4. 7-day plan example
-<img width="393" height="686" alt="yeahhhhhh 2026-01-11 at 8 39 34 AM" src="https://github.com/user-attachments/assets/ff1f260f-a373-4db2-aaaa-9c93eff50f94" />
+<div align="center">
 
+  ## Sneak Peek ♡
 
-You need computer + Node.js
-Copy project to your computer:textgit clone https://github.com/aneleldho06/wardrobewizard.git
-Go inside folder:textcd wardrobewizard
-Install everything:textnpm install
-Start the app:textnpm start(or npx expo start if using Expo)
+  <table>
+    <tr>
+      <td><b>Welcome Screen</b></td>
+      <td><b>Add Clothes Screen</b></td>
+    </tr>
+    <tr>
+      <td><img width="90%" src="https://github.com/user-attachments/assets/8c314729-47d5-41ee-b85a-5e7ca8dc0293" /></td>
+      <td><img width="90%" src="https://github.com/user-attachments/assets/e4c8c683-5dc6-4daf-8f4b-7deb05813188" /></td>
+    </tr>
+    <tr>
+      <td><b>Outfit Ideas Example</b></td>
+      <td><b>7-Day Plan Magic</b></td>
+    </tr>
+    <tr>
+      <td><img width="90%" src="https://github.com/user-attachments/assets/6ae49f29-e51b-4dca-92c2-ae3ef1af7b9b" /></td>
+      <td><img width="90%" src="https://github.com/user-attachments/assets/ff1f260f-a373-4db2-aaaa-9c93eff50f94" /></td>
+    </tr>
+  </table>
 
-This is still very early version ❤️
-Many things will become better slowly-slowly 🌱
+</div>
+
+<br>
+
+<div align="center">
+
+  ## Wanna try it yourself? (for curious friends & coders) 🚀
+
+  ```bash
+  # 1. Clone the repo (copy this!)
+  git clone https://github.com/aneleldho06/wardrobewizard.git
+
+  # 2. Go inside the folder
+  cd wardrobewizard
+
+  # 3. Install all the cute packages ♡
+  npm install
+
+  # 4. Start the magic!
+  npm start
+  # or if you're using Expo (most likely):
+  npx expo start
