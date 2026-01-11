@@ -1,21 +1,26 @@
-<div align![simple](https://github.com/user-attachments/assets/97d40840-475f-4fdc-bbb9-8b5b4b805543)
-="center">
+# WardrobeWizard 🪄👕
 
-</div>
+Hello! 🌟  
+This is a small, kind mobile app that helps you make nice outfits...  
+...using **only** the clothes you already have at home.  
 
-# Run and deploy your AI Studio app
+No need to buy anything new! ♻️  
+Just fun, simple styling with what you own.
 
-This contains everything you need to run your app locally.
+## What does the app do? (very easy version)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB
+1. You add your clothes (take photo or choose from gallery) 📸
+2. The app remembers your wardrobe
+3. You say: "I need outfit for college" or "party tonight"
+4. AI friend gives you 3–4 pretty outfit ideas using **your** clothes only 😊
+5. You can also ask for a full week plan (7 days of different looks!)
 
-## Run Locally
+Very useful for students, people who want to save money, or anyone who loves their old clothes 💛
 
-**Prerequisites:**  Node.js
+## Screenshots (coming soon!)
 
+Here you can show how the app looks!
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 1. Welcome / Start screen
+(Add your screenshot![simple](https://github.com/user-attachments/assets/195cc8de-704a-46b8-9ab7-c85387d5bbde)
+ here)
