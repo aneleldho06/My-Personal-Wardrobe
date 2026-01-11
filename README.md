@@ -3,11 +3,15 @@ Hello! 🌟
 This is a small, kind mobile app that helps you make nice outfits...  
 
 ...using **only** the clothes you already have at home.  
-<img width="1468" height="721" alt="image" src="https://github.com/user-attachments/assets/ecbbba5a-b814-4929-8887-5a78edb82db3" />
 
 WEBSITE LINK : https://the-wardrobe-wizard.lovable.app/
 
 MOBILE APP LINK : https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB
+
+#
+
+<img width="1468" height="721" alt="image" src="https://github.com/user-attachments/assets/ecbbba5a-b814-4929-8887-5a78edb82db3" />
+
 
 No need to buy anything new! ♻️  
 Just fun, simple styling with what you own.
