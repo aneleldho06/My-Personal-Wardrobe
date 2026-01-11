@@ -55,27 +55,27 @@ Sustainability through reuse — encouraging users to rediscover and creatively 
 ## Technical Setup (Development)
 
 
-# 1. Clone the repository
+1. Clone the repository
 ```bash 
 git clone https://github.com/aneleldho06/wardrobewizard.git
 ```
 
-# 2. Navigate to project directory
+2. Navigate to project directory
 ```bash
 cd wardrobewizard
 ```
 
-# 3. Install dependencies
+3. Install dependencies
 ```bash
 npm install
 ```
 
-# 4. Start the development server
+4. Start the development server
 ```bash
 npm start
 ```
 
-# or (recommended for Expo/React Native):
+or (recommended for Expo/React Native):
 ```bash
 npx expo start
 ```
