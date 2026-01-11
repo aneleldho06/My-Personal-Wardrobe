@@ -1,97 +1,70 @@
 <div align="center">
 
-  # WardrobeWizard 🪄✨👗👕
+# WardrobeWizard 🪄
 
-  <h3>Hi cutie! 💕 Your personal AI fashion bestie ♡</h3>
-
-  <p>
-    The little magical app that helps you create <b>super cute outfits</b><br>
-    using <b>only</b> the clothes you already have at home~ ♻️💖
-  </p>
-
-  <p>
-    <strong>Website:</strong> <a href="https://the-wardrobe-wizard.lovable.app/">the-wardrobe-wizard.lovable.app</a><br>
-    <strong>Mobile App (AI Studio):</strong> <a href="https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB">Click here ♡</a>
-  </p>
-
-  <br>
-
-  <img width="80%" alt="hero banner" src="https://github.com/user-attachments/assets/ecbbba5a-b814-4929-8887-5a78edb82db3" />
-
-  <br><br>
-
-  ## Why we made this? 🥹
-
-  Because your closet is already full of treasures…  
-  but you still feel like you have “nothing to wear” 😭  
-  Let’s change that together~ ♡
-
-  No shopping needed. Just you, your clothes, and a tiny bit of AI magic! 🌟
+**A Sustainable AI-Powered Personal Wardrobe Stylist**  
+*Style what you already own — no new purchases required*
 
 </div>
 
-## How it works (super easy peasy!) 💫
+## Project Overview
 
-1. Add your clothes 📸  
-   (take photo or pick from gallery — we make it cute & fast!)
+WardrobeWizard is a mobile-first application that empowers users to create fresh, occasion-appropriate outfits exclusively from their existing wardrobe. By leveraging AI, the app helps reduce clothing waste, promotes mindful consumption, and maximizes the utility of clothes people already own.
 
-2. Your wardrobe gets saved forever ♡
+**Key Philosophy**  
+Sustainability through reuse — encouraging users to rediscover and creatively combine items they already possess instead of purchasing new ones.
 
-3. Just tell your AI friend:  
-   “Outfit for college tomorrow~”  
-   “Party look tonight pls!!”  
-   “Cozy rainy day vibe 🥰”
+### Live Links
 
-4. Get 3–4 adorable outfit ideas using **only your clothes** ✨
+- **Web Version**: [https://the-wardrobe-wizard.lovable.app/](https://the-wardrobe-wizard.lovable.app/)  
+- **Mobile App (AI Studio Demo)**: [https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB](https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB)
 
-5. Bonus: Ask for a full **7-day plan** — different looks every day! 🗓️💕
+## Core Features
 
-Perfect for students, minimalism lovers, savers, and anyone who wants to love their old clothes more! 🫶
+1. **Digital Wardrobe Creation**  
+   Upload photos of your clothes (camera or gallery) with smart tagging support
 
-<br>
+2. **AI Outfit Recommendations**  
+   Generate 3–5 complete outfit suggestions tailored to:  
+   - Occasion (college, party, interview, casual, etc.)  
+   - Mood/weather preferences  
+   - Must-include items
 
-<div align="center">
+3. **7-Day Smart Outfit Planner**  
+   Weekly rotation plan that maximizes variety while reusing existing pieces efficiently
 
-  ## Sneak Peek ♡
+4. **Sustainability-Focused Experience**  
+   - Prioritizes underused items  
+   - No shopping recommendations or affiliate links  
+   - Encourages higher cost-per-wear and reduced consumption
 
-  <table>
-    <tr>
-      <td><b>Welcome Screen</b></td>
-      <td><b>Add Clothes Screen</b></td>
-    </tr>
-    <tr>
-      <td><img width="90%" src="https://github.com/user-attachments/assets/8c314729-47d5-41ee-b85a-5e7ca8dc0293" /></td>
-      <td><img width="90%" src="https://github.com/user-attachments/assets/e4c8c683-5dc6-4daf-8f4b-7deb05813188" /></td>
-    </tr>
-    <tr>
-      <td><b>Outfit Ideas Example</b></td>
-      <td><b>7-Day Plan Magic</b></td>
-    </tr>
-    <tr>
-      <td><img width="90%" src="https://github.com/user-attachments/assets/6ae49f29-e51b-4dca-92c2-ae3ef1af7b9b" /></td>
-      <td><img width="90%" src="https://github.com/user-attachments/assets/ff1f260f-a373-4db2-aaaa-9c93eff50f94" /></td>
-    </tr>
-  </table>
+## Screenshots
 
-</div>
+### Welcome & Onboarding Screen
+<img width="880" alt="Welcome Screen" src="https://github.com/user-attachments/assets/8c314729-47d5-41ee-b85a-5e7ca8dc0293" />
 
-<br>
+### Add Clothing Item Interface
+<img width="381" alt="Add Clothes Screen" src="https://github.com/user-attachments/assets/e4c8c683-5dc6-4daf-8f4b-7deb05813188" />
 
-<div align="center">
+### Outfit Recommendation Examples
+<img width="420" alt="Outfit Suggestions" src="https://github.com/user-attachments/assets/6ae49f29-e51b-4dca-92c2-ae3ef1af7b9b" />
 
-  ## Wanna try it yourself? (for curious friends & coders) 🚀
+### 7-Day Outfit Plan View
+<img width="393" alt="7-Day Plan" src="https://github.com/user-attachments/assets/ff1f260f-a373-4db2-aaaa-9c93eff50f94" />
 
-  ```bash
-  # 1. Clone the repo (copy this!)
-  git clone https://github.com/aneleldho06/wardrobewizard.git
+## Technical Setup (Development)
 
-  # 2. Go inside the folder
-  cd wardrobewizard
+```bash
+# 1. Clone the repository
+git clone https://github.com/aneleldho06/wardrobewizard.git
 
-  # 3. Install all the cute packages ♡
-  npm install
+# 2. Navigate to project directory
+cd wardrobewizard
 
-  # 4. Start the magic!
-  npm start
-  # or if you're using Expo (most likely):
-  npx expo start
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm start
+# or (recommended for Expo/React Native):
+npx expo start
