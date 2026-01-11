@@ -1,13 +1,16 @@
 
 import React from 'react';
+import { useWardrobe } from '../context/WardrobeContext';
 
 interface LayoutProps {
   children: React.ReactNode;
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  onUploadClick: () => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab }) => {
+const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab, onUploadClick }) => {
+  const { userName } = useWardrobe();
   const tabs = [
     { id: 'wardrobe', label: 'Wardrobe', icon: '👕' },
     { id: 'creator', label: 'Create', icon: '✨' },
@@ -15,39 +18,60 @@ const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab }) =>
   ];
 
   return (
-    <div className="flex flex-col h-screen max-w-md mx-auto bg-indigo-50/5 overflow-hidden shadow-2xl relative">
+    <div className="flex flex-col h-screen max-w-md mx-auto bg-gradient-to-br from-[#0D01F5] via-[#1A0B6A] to-[#050133] overflow-hidden shadow-2xl relative">
+      {/* Immersive Background Glows */}
+      <div className="absolute top-[-5%] left-[-10%] w-[60%] h-[30%] bg-indigo-600/30 blur-[100px] rounded-full animate-blob pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[-10%] w-[50%] h-[40%] bg-purple-600/20 blur-[120px] rounded-full animate-blob animation-delay-2000 pointer-events-none" />
+
       {/* Header */}
-      <header className="flex justify-between items-center p-6 text-white shrink-0">
-        <h1 className="text-2xl font-bold tracking-tight">Wardrobe</h1>
-        <div className="flex items-center gap-3">
-          <span className="text-sm font-medium opacity-90">Amber</span>
-          <img src="https://picsum.photos/seed/amber/100/100" className="w-10 h-10 rounded-full border-2 border-white/50" alt="Profile" />
+      <header className="flex justify-between items-center p-8 text-white shrink-0 z-10">
+        <div className="flex flex-col">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 mb-1">WardrobeWizard</span>
+          <h1 className="text-3xl font-black tracking-tighter uppercase italic">Ready, {userName}?</h1>
+        </div>
+        <div className="relative group">
+          <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${userName}`} className="w-14 h-14 rounded-[22px] bg-white/10 backdrop-blur-md border-2 border-white/20 shadow-xl transition-transform active:scale-90" alt="Profile" />
+          <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-2 border-[#120B38]" />
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto pb-24 px-4">
+      <main className="flex-1 overflow-y-auto pb-36 px-6 no-scrollbar z-10">
         {children}
       </main>
 
       {/* Navigation */}
-      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[360px] bg-white/90 backdrop-blur-md rounded-full px-6 py-4 flex justify-between items-center shadow-xl border border-white/20">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`flex flex-col items-center gap-1 transition-all ${
-              activeTab === tab.id ? 'text-indigo-600 scale-110' : 'text-gray-400'
-            }`}
-          >
-            <span className="text-xl">{tab.icon}</span>
-            <span className="text-[10px] font-bold uppercase tracking-wider">{tab.label}</span>
-          </button>
-        ))}
-      </nav>
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] z-50">
+        {/* Central Upload Button */}
+        <button 
+          onClick={onUploadClick}
+          className="group absolute -top-16 left-1/2 -translate-x-1/2 w-20 h-20 bg-white text-[#0D01F5] rounded-[32px] flex items-center justify-center shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-4 border-[#120B38] active:scale-90 transition-all z-[60] overflow-hidden"
+        >
+          <span className="text-4xl font-black transform -translate-y-[2px] transition-transform duration-300 group-hover:rotate-90">+</span>
+        </button>
 
-      <footer className="absolute bottom-1 w-full text-center text-[8px] text-white/40 pointer-events-none">
-        Wardrobe Team 2025 — All Rights Reserved
+        <nav className="bg-white/5 backdrop-blur-3xl rounded-[36px] px-4 py-3 flex justify-between items-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 gap-2">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex flex-col items-center justify-center gap-1 transition-all duration-300 flex-1 h-16 rounded-[24px] ${
+                activeTab === tab.id 
+                  ? 'bg-white text-[#0D01F5] shadow-2xl scale-105' 
+                  : 'text-white/60 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <span className={`text-xl ${activeTab === tab.id ? 'scale-110' : ''}`}>{tab.icon}</span>
+              <span className="text-[8px] font-black uppercase tracking-tighter">
+                {tab.label}
+              </span>
+            </button>
+          ))}
+        </nav>
+      </div>
+
+      <footer className="absolute bottom-1 w-full text-center text-[7px] font-black uppercase tracking-[0.5em] text-white/10 pointer-events-none">
+        Style Sustainable • 2025
       </footer>
     </div>
   );

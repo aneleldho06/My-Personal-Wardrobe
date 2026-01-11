@@ -1,27 +1,22 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useWardrobe } from '../context/WardrobeContext';
 import { WardrobeItem, Category } from '../types';
 
 const OutfitCreator: React.FC = () => {
-  const { items, saveOutfit } = useWardrobe();
+  const { items, saveOutfit, userName } = useWardrobe();
   const [selected, setSelected] = useState<Partial<Record<Category, WardrobeItem>>>({});
   const [locked, setLocked] = useState<Record<Category, boolean>>({
     hats: false, shirts: false, pants: false, shoes: false
   });
   const [showSuccess, setShowSuccess] = useState(false);
-  const [timer, setTimer] = useState(180);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => {
-    if (timer > 0) {
-      const t = setInterval(() => setTimer(prev => prev - 1), 1000);
-      return () => clearInterval(t);
-    }
-  }, [timer]);
+  const categories: Category[] = ['hats', 'shirts', 'pants', 'shoes'];
 
   const randomize = () => {
     const newSelected = { ...selected };
-    (['hats', 'shirts', 'pants', 'shoes'] as Category[]).forEach(cat => {
+    categories.forEach(cat => {
       if (!locked[cat]) {
         const catItems = items.filter(i => i.category === cat);
         if (catItems.length) {
@@ -36,7 +31,7 @@ const OutfitCreator: React.FC = () => {
     if (Object.keys(selected).length > 0) {
       saveOutfit({
         id: Math.random().toString(36),
-        name: `Outfit ${new Date().toLocaleDateString()}`,
+        name: `Look ${new Date().toLocaleDateString()}`,
         items: selected,
         createdAt: Date.now()
       });
@@ -44,100 +39,189 @@ const OutfitCreator: React.FC = () => {
     }
   };
 
-  const formatTime = (s: number) => {
-    const mins = Math.floor(s / 60);
-    const secs = s % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  const downloadCard = async () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // High-Resolution Editorial Dimensions (9:16)
+    canvas.width = 1080;
+    canvas.height = 1920;
+
+    // 1. Premium Background
+    const bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    bgGrad.addColorStop(0, '#0D01F5');
+    bgGrad.addColorStop(1, '#050166');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // 2. Artistic Accents
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+    ctx.beginPath(); ctx.arc(1080, 0, 800, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(0, 1920, 600, 0, Math.PI * 2); ctx.fill();
+
+    // 3. Editorial Typography
+    ctx.fillStyle = '#FFFFFF';
+    ctx.textAlign = 'center';
+    
+    ctx.font = '900 40px "Plus Jakarta Sans"';
+    ctx.fillText('WARDROBE WIZARD', canvas.width / 2, 120);
+    
+    ctx.font = 'italic 800 110px "Plus Jakarta Sans"';
+    ctx.fillText('STYLE REPORT', canvas.width / 2, 260);
+
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(200, 320); ctx.lineTo(880, 320); ctx.stroke();
+
+    // 4. Center-Stacked Items
+    const slotW = 500;
+    const slotH = 300;
+    const startY = 400;
+    const spacing = 40;
+
+    for (let i = 0; i < categories.length; i++) {
+      const cat = categories[i];
+      const item = selected[cat];
+      const y = startY + i * (slotH + spacing);
+
+      // Label background
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.beginPath();
+      ctx.roundRect(100, y, 880, slotH, 40);
+      ctx.fill();
+
+      if (item) {
+        // Draw Image
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = item.imageUrl;
+        await new Promise((resolve) => {
+          img.onload = () => {
+            ctx.save();
+            ctx.beginPath();
+            ctx.roundRect(140, y + 20, 260, 260, 30);
+            ctx.clip();
+            ctx.drawImage(img, 140, y + 20, 260, 260);
+            ctx.restore();
+            resolve(null);
+          };
+          img.onerror = () => resolve(null);
+        });
+
+        // Item Text
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = '900 32px "Plus Jakarta Sans"';
+        ctx.fillText(cat.toUpperCase(), 440, y + 110);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.font = '600 36px "Plus Jakarta Sans"';
+        ctx.fillText(item.name, 440, y + 170);
+      } else {
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.font = '800 30px "Plus Jakarta Sans"';
+        ctx.fillText(`EMPTY ${cat.toUpperCase()}`, canvas.width / 2, y + slotH / 2 + 10);
+      }
+    }
+
+    // 5. Footer "Seal"
+    ctx.fillStyle = '#FFFFFF';
+    ctx.textAlign = 'center';
+    ctx.font = '900 24px "Plus Jakarta Sans"';
+    ctx.fillText('WIZARD VERIFIED • COLLECTION 2025', canvas.width / 2, 1780);
+    
+    ctx.font = '700 32px "Plus Jakarta Sans"';
+    ctx.fillText(`PREPARED FOR ${userName.toUpperCase()}`, canvas.width / 2, 1840);
+
+    // 6. Download
+    const dataUrl = canvas.toDataURL('image/png', 1.0);
+    const link = document.createElement('a');
+    link.download = `WardrobeWizard-Editorial-${userName.replace(/\s/g, '')}.png`;
+    link.href = dataUrl;
+    link.click();
   };
 
   return (
-    <div className="space-y-6 relative h-full flex flex-col items-center">
-      {/* Timer Bar */}
-      <div className="w-full bg-white/20 rounded-full h-8 p-1 flex items-center shadow-lg backdrop-blur-md overflow-hidden">
-        <div 
-          className="bg-cyan-400 h-full rounded-full transition-all duration-1000 flex items-center px-4"
-          style={{ width: `${(timer / 180) * 100}%` }}
-        >
-          <span className="text-[10px] font-black text-white whitespace-nowrap italic">
-            {timer > 0 ? `GO GO! ${formatTime(timer)}` : 'TIME UP! ✨'}
-          </span>
-        </div>
+    <div className="flex flex-col items-center space-y-8 pb-10">
+      <canvas ref={canvasRef} className="hidden" />
+
+      {/* Vertical Lookbook Stack */}
+      <div className="w-full space-y-4 flex flex-col items-center">
+        {categories.map((cat) => (
+          <div key={cat} className="w-full flex items-center gap-4 bg-white/5 backdrop-blur-xl p-4 rounded-[32px] border border-white/10 group active:scale-[0.98] transition-all">
+            {/* Image Slot */}
+            <div className="w-24 h-24 bg-white/10 rounded-2xl overflow-hidden flex items-center justify-center border border-white/10 shadow-inner">
+              {selected[cat] ? (
+                <img src={selected[cat]!.imageUrl} className="w-full h-full object-cover" alt={cat} />
+              ) : (
+                <span className="text-[20px] opacity-20 group-hover:opacity-40 transition-opacity">
+                  {cat === 'hats' ? '🧢' : cat === 'shirts' ? '👕' : cat === 'pants' ? '👖' : '👟'}
+                </span>
+              )}
+            </div>
+
+            {/* Info & Lock */}
+            <div className="flex-1">
+              <span className="block text-[10px] font-black text-cyan-400 uppercase tracking-widest mb-1">{cat}</span>
+              <h3 className="text-white text-sm font-bold uppercase truncate max-w-[120px]">
+                {selected[cat]?.name || 'Not selected'}
+              </h3>
+            </div>
+
+            <button 
+              onClick={() => setLocked(prev => ({ ...prev, [cat]: !prev[cat] }))}
+              className={`px-4 py-2 rounded-xl text-[9px] font-black uppercase transition-all flex items-center gap-2 ${
+                locked[cat] 
+                  ? 'bg-yellow-400 text-[#0D01F5] shadow-[0_4px_12px_rgba(250,204,21,0.3)]' 
+                  : 'bg-white/10 text-white/40 hover:bg-white/20'
+              }`}
+            >
+              <span>{locked[cat] ? '🔒' : '🔓'}</span>
+              <span>LOCK {cat.slice(0, -1)}</span>
+            </button>
+          </div>
+        ))}
       </div>
 
-      <div className="relative w-full aspect-[4/5] bg-indigo-200/40 rounded-[40px] p-6 flex flex-col items-center justify-center border border-white/20 shadow-2xl overflow-hidden">
-        
-        {/* Avatar Placeholder / Visual representation */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-20">
-           <div className="w-16 h-16 border-2 border-white rounded-full mb-2" />
-           <div className="w-32 h-48 border-2 border-white rounded-t-3xl" />
-        </div>
-
-        {/* Selected Items Visualization */}
-        <div className="z-10 flex flex-col items-center gap-4">
-           {['hats', 'shirts', 'pants', 'shoes'].map(cat => (
-             <div key={cat} className="w-24 h-24 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 shadow-lg overflow-hidden transition-all duration-300">
-                {selected[cat as Category] ? (
-                  <img src={selected[cat as Category]!.imageUrl} className="w-full h-full object-cover mix-blend-multiply" />
-                ) : (
-                  <span className="text-white/30 text-xs font-bold uppercase">{cat}</span>
-                )}
-             </div>
-           ))}
-        </div>
-
-        {/* Controls Overlay */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4">
-          <div className="bg-pink-300/90 backdrop-blur-lg p-4 rounded-3xl shadow-xl border border-white/20">
-             <div className="flex flex-col gap-4">
-                {(['hats', 'shirts', 'pants', 'shoes'] as Category[]).map(cat => (
-                  <div key={cat} className="flex items-center gap-2">
-                     <label className="relative inline-flex items-center cursor-pointer">
-                        <input 
-                          type="checkbox" 
-                          className="sr-only peer" 
-                          checked={locked[cat]}
-                          onChange={() => setLocked(prev => ({ ...prev, [cat]: !prev[cat] }))}
-                        />
-                        <div className="w-10 h-6 bg-white/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-500"></div>
-                     </label>
-                     <span className="text-[10px] font-black text-white uppercase tracking-tighter">{cat}</span>
-                  </div>
-                ))}
-             </div>
-          </div>
-        </div>
-
+      {/* Actions */}
+      <div className="flex gap-4 w-full">
         <button 
           onClick={randomize}
-          className="absolute left-6 bottom-6 w-16 h-16 bg-emerald-400 text-white rounded-full font-black text-[10px] uppercase shadow-lg shadow-emerald-500/50 hover:scale-110 active:scale-95 transition-all flex items-center justify-center text-center leading-tight border-4 border-white"
+          className="flex-1 py-5 bg-emerald-500 text-white font-black text-xs uppercase rounded-[24px] shadow-2xl active:scale-95 transition-all flex items-center justify-center gap-3 border-b-4 border-emerald-700"
         >
-          Random
+          <span>🎲</span> SHUFFLE LOOK
         </button>
-
         <button 
           onClick={handleSave}
-          className="absolute right-6 bottom-6 px-6 py-3 bg-cyan-300 text-indigo-900 rounded-full font-black text-[10px] uppercase shadow-lg shadow-cyan-500/50 hover:scale-110 active:scale-95 transition-all border-4 border-white"
+          disabled={Object.keys(selected).length === 0}
+          className="flex-1 py-5 bg-white text-[#0D01F5] font-black text-xs uppercase rounded-[24px] shadow-2xl active:scale-95 transition-all flex items-center justify-center gap-3 disabled:opacity-30"
         >
-          Done
+          <span>✨</span> SAVE STYLE
         </button>
       </div>
 
       {showSuccess && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-indigo-900/60 backdrop-blur-sm">
-          <div className="bg-white rounded-[40px] p-8 w-full max-w-[320px] shadow-2xl relative overflow-hidden flex flex-col items-center">
-            {/* Confetti Animation Placeholder */}
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-            
-            <div className="w-16 h-16 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner">
-               ✓
-            </div>
-            
-            <h3 className="text-xl font-black text-indigo-900 mb-6">SAVED! ✨</h3>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[#0D01F5]/90 backdrop-blur-xl animate-in fade-in duration-300">
+          <div className="bg-white rounded-[40px] p-8 w-full max-w-[360px] shadow-2xl flex flex-col items-center text-center animate-in zoom-in slide-in-from-bottom-10">
+            <div className="w-20 h-20 bg-emerald-100 text-emerald-500 rounded-[28px] flex items-center justify-center text-3xl mb-6 shadow-inner animate-bounce">✓</div>
+            <h2 className="text-2xl font-black text-indigo-950 mb-2 uppercase tracking-tighter italic">ICONIC LOOK!</h2>
+            <p className="text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8">Ready to print your editorial card?</p>
 
-            <div className="flex flex-col gap-3 w-full">
-               <button onClick={() => setShowSuccess(false)} className="w-full py-4 bg-cyan-200 text-cyan-900 font-black text-xs uppercase rounded-2xl active:scale-95 transition-all">Download</button>
-               <button onClick={() => setShowSuccess(false)} className="w-full py-4 bg-indigo-100 text-indigo-900 font-black text-xs uppercase rounded-2xl active:scale-95 transition-all">Add to Favorites</button>
-               <button onClick={() => setShowSuccess(false)} className="w-full py-4 bg-indigo-50 text-indigo-400 font-black text-xs uppercase rounded-2xl active:scale-95 transition-all">Exit</button>
+            <div className="space-y-3 w-full">
+               <button 
+                  onClick={downloadCard} 
+                  className="w-full py-5 bg-[#0D01F5] text-white font-black text-xs uppercase rounded-[24px] shadow-xl active:scale-95 transition-all flex items-center justify-center gap-3"
+                >
+                  <span>📥</span> DOWNLOAD EDITORIAL CARD
+               </button>
+               <button 
+                  onClick={() => setShowSuccess(false)} 
+                  className="w-full py-5 bg-indigo-50 text-indigo-900 font-black text-xs uppercase rounded-[24px] active:scale-95 transition-all"
+                >
+                  KEEP STYLING
+               </button>
             </div>
           </div>
         </div>
