@@ -1,20 +1,52 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# WardrobeWizard 🪄👕
 
-# Run and deploy your AI Studio app
+Hello! 🌟  
+This is a small, kind mobile app that helps you make nice outfits...  
+...using **only** the clothes you already have at home.  
 
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/drive/1DqFXOj3nhnvF54Ej7YdtBvBEHqH2zEjB
-
-## Run Locally
-
-**Prerequisites:**  Node.js
+No need to buy anything new! ♻️  
+Just fun, simple styling with what you own.
+![hello001](https://github.com/user-attachments/assets/8344572a-e48a-48c7-b3df-e5a1e850f6f8)
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+## What does the app do? (very easy version)
+
+1. You add your clothes (take photo or choose from gallery) 📸
+2. The app remembers your wardrobe
+3. You say: "I need outfit for college" or "party tonight"
+4. AI friend gives you 3–4 pretty outfit ideas using **your** clothes only 😊
+5. You can also ask for a full week plan (7 days of different looks!)
+
+Very useful for students, people who want to save money, or anyone who loves their old clothes 💛
+
+## Screenshots (coming soon!)
+
+Here you can show how the app looks!
+
+### 1. Welcome / Start screen
+[simple](https://github.com/user-attachments/assets/195cc8de-704a-46b8-9ab7-c85387d5bbde)
+
+
+![Welcome Screen](your-image-link-here.jpg)
+
+2. Screen where you add clothes
+
+<img width="381" height="556" alt="yeahhhhhh 2026-01-11 at 8 35 57 AM" src="https://github.com/user-attachments/assets/e4c8c683-5dc6-4daf-8f4b-7deb05813188" />
+
+3. Outfit ideas example
+
+<img width="420" height="692" alt="yeahhhhhh 2026-01-11 at 8 37 13 AM" src="https://github.com/user-attachments/assets/6ae49f29-e51b-4dca-92c2-ae3ef1af7b9b" />
+
+4. 7-day plan example
+<img width="393" height="686" alt="yeahhhhhh 2026-01-11 at 8 39 34 AM" src="https://github.com/user-attachments/assets/ff1f260f-a373-4db2-aaaa-9c93eff50f94" />
+
+
+You need computer + Node.js
+Copy project to your computer:textgit clone https://github.com/aneleldho06/wardrobewizard.git
+Go inside folder:textcd wardrobewizard
+Install everything:textnpm install
+Start the app:textnpm start(or npx expo start if using Expo)
+
+This is still very early version ❤️
+Many things will become better slowly-slowly 🌱
