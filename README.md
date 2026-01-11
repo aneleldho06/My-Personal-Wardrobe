@@ -6,7 +6,8 @@ This is a small, kind mobile app that helps you make nice outfits...
 
 No need to buy anything new! ♻️  
 Just fun, simple styling with what you own.
-![hello001](https://github.com/user-attachments/assets/8344572a-e48a-48c7-b3df-e5a1e850f6f8)
+<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/a18c2129-f754-46e8-9f05-d6f28272d6fd" />
+
 
 
 
