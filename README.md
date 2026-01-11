@@ -1,5 +1,6 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="(https://github.com/aneleldho06/My-Personal-Wardrobe/sample.png)" />
+<div align![simple](https://github.com/user-attachments/assets/97d40840-475f-4fdc-bbb9-8b5b4b805543)
+="center">
+
 </div>
 
 # Run and deploy your AI Studio app
