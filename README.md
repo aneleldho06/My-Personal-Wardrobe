@@ -22,5 +22,33 @@ Very useful for students, people who want to save money, or anyone who loves the
 Here you can show how the app looks!
 
 ### 1. Welcome / Start screen
-(Add your screenshot![simple](https://github.com/user-attachments/assets/195cc8de-704a-46b8-9ab7-c85387d5bbde)
- here)
+[simple](https://github.com/user-attachments/assets/195cc8de-704a-46b8-9ab7-c85387d5bbde)
+ 
+How to add image in GitHub README:
+1. Upload your photo to the repo (drag & drop in GitHub website)
+2. Or upload to imgur.com / postimages.org and copy direct link
+3. Then write:  
+   ```markdown
+   ![Welcome Screen](your-image-link-here.jpg)
+
+2. Screen where you add clothes
+
+<img width="381" height="556" alt="yeahhhhhh 2026-01-11 at 8 35 57 AM" src="https://github.com/user-attachments/assets/e4c8c683-5dc6-4daf-8f4b-7deb05813188" />
+
+3. Outfit ideas example
+
+<img width="420" height="692" alt="yeahhhhhh 2026-01-11 at 8 37 13 AM" src="https://github.com/user-attachments/assets/6ae49f29-e51b-4dca-92c2-ae3ef1af7b9b" />
+
+4. 7-day plan example
+<img width="393" height="686" alt="yeahhhhhh 2026-01-11 at 8 39 34 AM" src="https://github.com/user-attachments/assets/ff1f260f-a373-4db2-aaaa-9c93eff50f94" />
+
+
+You need computer + Node.js
+Copy project to your computer:textgit clone https://github.com/aneleldho06/wardrobewizard.git
+Go inside folder:textcd wardrobewizard
+Install everything:textnpm install
+Start the app:textnpm start(or npx expo start if using Expo)
+
+This is still very early version ❤️
+Many things will become better slowly-slowly 🌱
+
