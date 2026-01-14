@@ -6,6 +6,7 @@
 *Style what you already own — no new purchases required*
 
 </div>
+> Hackathon Wining Project
 
 ## Project Overview
 
